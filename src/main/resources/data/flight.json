@@ -1,8 +1,42 @@
-{
-  "flightNumber": "AI101",
-  "departureAirport": "JFK",
-  "arrivalAirport": "DEL",
-  "departureDate": "2023-08-26T14:00:00",
-  "arrivalDate": "2023-08-27T14:30:00",
-  "price": 500
-}
+[
+  {
+    "flightNumber": "AI101",
+    "departureAirport": "JFK",
+    "arrivalAirport": "DEL",
+    "departureDate": "2023-08-26T14:00:00",
+    "arrivalDate": "2023-08-27T14:30:00",
+    "price": 500
+  },
+  {
+    "flightNumber": "AI102",
+    "departureAirport": "LAX",
+    "arrivalAirport": "LHR",
+    "departureDate": "2023-08-26T10:00:00",
+    "arrivalDate": "2023-08-27T10:45:00",
+    "price": 650
+  },
+  {
+    "flightNumber": "AI103",
+    "departureAirport": "SFO",
+    "arrivalAirport": "DXB",
+    "departureDate": "2023-08-27T15:00:00",
+    "arrivalDate": "2023-08-28T17:00:00",
+    "price": 720
+  },
+  {
+    "flightNumber": "AI104",
+    "departureAirport": "ORD",
+    "arrivalAirport": "BOM",
+    "departureDate": "2023-08-28T12:00:00",
+    "arrivalDate": "2023-08-29T13:15:00",
+    "price": 590
+  },
+  {
+    "flightNumber": "AI105",
+    "departureAirport": "BOS",
+    "arrivalAirport": "HKG",
+    "departureDate": "2023-08-29T16:00:00",
+    "arrivalDate": "2023-08-30T18:30:00",
+    "price": 780
+  }
+]
