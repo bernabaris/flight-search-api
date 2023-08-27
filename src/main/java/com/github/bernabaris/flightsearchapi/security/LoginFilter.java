@@ -75,4 +75,3 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
         this.loginUser = user;
     }
 }
-

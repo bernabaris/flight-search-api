@@ -37,9 +37,6 @@ public class DataGenerator implements ApplicationListener<ContextRefreshedEvent>
         this.dbService = dbService;
         this.resourceLoader = resourceLoader;
     }
-    Gson gson = new GsonBuilder()
-            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-            .create();
 
     public static <T> T loadJsonFile(ResourceLoader resourceLoader, String fileDirectory, String filename,
                                      Class<T> classOfT) throws IOException {

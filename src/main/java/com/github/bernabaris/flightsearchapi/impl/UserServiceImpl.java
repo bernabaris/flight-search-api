@@ -89,6 +89,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 user.getPassword());
         return result.verified;
     }
-
 }
-

@@ -43,5 +43,4 @@ public class LoginAuthenticationProvider extends AbstractUserDetailsAuthenticati
             throws AuthenticationException {
         log.debug("Additional authentication checks for user: {}", userDetails.getUsername());
     }
-
 }

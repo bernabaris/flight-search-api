@@ -10,6 +10,4 @@ import java.util.List;
 public interface AirportRepository extends JpaRepository<AirportEntity,Long> {
     @Query("Select airports from AirportEntity airports where airports.city.id= :flightId")
     List<AirportEntity> fetchAirportsByFlightId(@Param("flightId") Long flightId);
-
-
 }

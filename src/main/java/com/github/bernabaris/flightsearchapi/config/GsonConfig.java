@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 
 @Configuration
 public class GsonConfig {
-
     @Bean
     public Gson gson() {
         return new GsonBuilder()
@@ -20,3 +19,4 @@ public class GsonConfig {
                 .create();
     }
 }
+

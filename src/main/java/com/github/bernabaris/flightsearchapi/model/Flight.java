@@ -46,5 +46,4 @@ public class Flight {
 
     @Schema(description = "Date when the flight record was last updated")
     private Date updated;
-
 }

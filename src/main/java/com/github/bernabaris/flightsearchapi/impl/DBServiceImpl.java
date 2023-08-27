@@ -54,13 +54,10 @@ public class DBServiceImpl implements DBService {
         return flights.stream().map(this::convertToFlight).collect(Collectors.toList());
     }
 
-
     @Override
     public List<Flight> getAllFlights() {
         return flightRepository.findAll().stream().map(this::convertToFlight).toList();
     }
-
-
 
     @Override
     public void deleteFlight(long flightId) {
@@ -87,6 +84,7 @@ public class DBServiceImpl implements DBService {
     public List<Airport> getAllAirports() {
         return airportRepository.findAll().stream().map(this::convertToAirport).toList();
     }
+
     @Override
     public Flight addOrUpdateFlight(Flight flight) {
         return convertToFlight(flightRepository.save(convertToFlightEntity(flight)));
@@ -155,12 +153,10 @@ public class DBServiceImpl implements DBService {
                 .build();
     }
 
-
     private Airport convertToAirport(AirportEntity airportEntity) {
         return Airport.builder()
                 .id(airportEntity.getId())
-                .city(airportEntity.getCity().getName())  // Assuming Airport model has a city attribute
-                // Add any other fields that need conversion here
+                .city(airportEntity.getCity().getName())
                 .build();
     }
 
@@ -171,13 +167,7 @@ public class DBServiceImpl implements DBService {
 
         return AirportEntity.builder()
                 .id(airport.getId())
-                .city(cityEntity)  // Now we provide a CityEntity object
+                .city(cityEntity)
                 .build();
     }
 }
-
-
-
-
-
-

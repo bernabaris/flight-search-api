@@ -25,8 +25,4 @@ public interface FlightService {
 
     Flight deleteFlight(long flightId);
 
-
-
-
-
 }

@@ -29,7 +29,6 @@ public class DtoUtils {
                 .build();
     }
 
-
     public static AppUser convertToUser(UserInputDto dto) {
         return AppUser.builder()
                 .firstName(dto.getFirstName())
@@ -54,6 +53,4 @@ public class DtoUtils {
     private static String getAirportNameFromId(Long id) {
         return "Airport-" + id;
     }
-
-
 }

@@ -74,14 +74,4 @@ public class FlightServiceImpl implements FlightService {
         List<Flight> flights = dbService.getFlightsByCriteria(departureAirport, arrivalAirport, departureDate, returnDate);
         return Optional.ofNullable(flights);
     }
-
-
-
-
-
-
-
-
-
-
 }

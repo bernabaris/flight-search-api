@@ -18,7 +18,6 @@ public class TokenUtil {
     }
 
     private static final int TOKEN_VALID_DURATION_MIN = 60 * 24;
-
     public static final String USER_ID_CLAIM = "id";
     public static final String EMAIL_CLAIM = "email";
 

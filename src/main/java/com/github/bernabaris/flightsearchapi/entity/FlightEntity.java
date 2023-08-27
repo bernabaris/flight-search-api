@@ -39,5 +39,4 @@ public class FlightEntity {
     private LocalDateTime returnDateTime;
 
     private BigDecimal price;
-
 }
