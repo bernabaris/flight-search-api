@@ -5,6 +5,7 @@ import com.github.bernabaris.flightsearchapi.entity.CityEntity;
 import com.github.bernabaris.flightsearchapi.entity.FlightEntity;
 import com.github.bernabaris.flightsearchapi.model.Flight;
 import com.github.bernabaris.flightsearchapi.repository.FlightRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.scheduling.annotation.Scheduled;
 

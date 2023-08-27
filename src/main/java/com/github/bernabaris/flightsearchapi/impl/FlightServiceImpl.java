@@ -6,8 +6,8 @@ import com.github.bernabaris.flightsearchapi.model.Flight;
 import com.github.bernabaris.flightsearchapi.service.DBService;
 import com.github.bernabaris.flightsearchapi.service.FlightService;
 
-
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +49,6 @@ public class FlightServiceImpl implements FlightService {
     public Flight addFlight(Flight flight) {
         flight.setCreated(new Date());
         flight.setUpdated(new Date());
-        // Additional logic if necessary
         return dbService.addOrUpdateFlight(flight);
     }
 
@@ -70,8 +69,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Optional<List<Flight>> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate) {
-        List<Flight> flights = dbService.getFlightsByCriteria(departureAirport, arrivalAirport, departureDate, returnDate);
-        return Optional.ofNullable(flights);
+    public List<Flight> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate) {
+        return dbService.getFlightsByCriteria(departureAirport, arrivalAirport, departureDate, returnDate);
     }
 }

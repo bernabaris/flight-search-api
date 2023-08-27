@@ -5,8 +5,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 public interface UserService {
     String signUp(AppUser user);
-
     AppUser fetchUserByEmail(String email);
-
     boolean validatePassword(UsernamePasswordAuthenticationToken authentication, AppUser user);
 }

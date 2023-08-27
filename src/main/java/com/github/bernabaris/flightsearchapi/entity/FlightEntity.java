@@ -1,6 +1,6 @@
 package com.github.bernabaris.flightsearchapi.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

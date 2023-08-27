@@ -19,4 +19,3 @@ public class GsonConfig {
                 .create();
     }
 }
-

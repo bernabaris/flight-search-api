@@ -8,7 +8,7 @@ import com.github.bernabaris.flightsearchapi.dto.DtoUtils;
 import com.github.bernabaris.flightsearchapi.model.AppUser;
 import com.github.bernabaris.flightsearchapi.service.FlightService;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,4 +53,3 @@ public class FlightController {
         return DtoUtils.convertToFlightDto(addedFlight);
     }
 }
-

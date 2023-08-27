@@ -9,7 +9,7 @@ import com.github.bernabaris.flightsearchapi.impl.UserServiceImpl;
 import com.github.bernabaris.flightsearchapi.model.Flight;
 import com.github.bernabaris.flightsearchapi.service.FlightService;
 import com.github.bernabaris.flightsearchapi.service.UserService;
-import jakarta.annotation.Resource;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -30,6 +30,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -77,6 +78,15 @@ public class FlightBoxTest {
     }
 
     static Flight flight1;
+    @Test
+    @Rollback(false)
+    public void test02_addFlight() {
+        Flight addedFlight = flightService.addFlight(DtoUtils.convertToFlight(flight1dto));
+        flight1 = addedFlight;
+        Assert.assertNotNull(addedFlight);
+        Assert.assertEquals(flight1dto.getDepartureAirportId(), addedFlight.getDepartureAirportId());
+        Assert.assertEquals(flight1dto.getArrivalAirportId(), addedFlight.getArrivalAirportId());
+    }
 
     @Test
     @Rollback(false)
@@ -87,5 +97,4 @@ public class FlightBoxTest {
         Assert.assertTrue(flightService.getAirport(flight1.getArrivalAirportId()).isPresent());
         Assert.assertTrue(flightService.getAirport(flight1.getDepartureAirportId()).isPresent());
     }
-
 }

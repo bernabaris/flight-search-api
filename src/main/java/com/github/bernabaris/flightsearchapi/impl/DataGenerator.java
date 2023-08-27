@@ -5,7 +5,7 @@ import com.github.bernabaris.flightsearchapi.service.DBService;
 import com.github.bernabaris.flightsearchapi.util.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import io.micrometer.common.lang.NonNull;
+import org.springframework.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;

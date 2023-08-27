@@ -2,7 +2,9 @@ package com.github.bernabaris.flightsearchapi.security;
 
 import com.github.bernabaris.flightsearchapi.impl.UserServiceImpl;
 import com.github.bernabaris.flightsearchapi.model.AppUser;
+
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;

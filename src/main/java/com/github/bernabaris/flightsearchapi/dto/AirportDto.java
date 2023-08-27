@@ -9,4 +9,3 @@ public class AirportDto {
     private Long id;
     private String city;
 }
-

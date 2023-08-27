@@ -6,7 +6,7 @@ import com.github.bernabaris.flightsearchapi.dto.UserInputDto;
 import com.github.bernabaris.flightsearchapi.impl.UserServiceImpl;
 import com.github.bernabaris.flightsearchapi.model.AppUser;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 

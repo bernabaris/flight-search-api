@@ -3,7 +3,7 @@ package com.github.bernabaris.flightsearchapi.impl;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.github.bernabaris.flightsearchapi.model.AppUser;
 import com.github.bernabaris.flightsearchapi.service.UserService;
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

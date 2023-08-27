@@ -1,82 +1,84 @@
-[
-  {
-    "flightNumber": "AI101",
-    "departureAirport": "JFK",
-    "arrivalAirport": "DEL",
-    "departureDate": "2023-08-26T14:00:00",
-    "arrivalDate": "2023-08-27T14:30:00",
-    "price": 500
-  },
-  {
-    "flightNumber": "AI102",
-    "departureAirport": "LAX",
-    "arrivalAirport": "LHR",
-    "departureDate": "2023-08-26T10:00:00",
-    "arrivalDate": "2023-08-27T10:45:00",
-    "price": 650
-  },
-  {
-    "flightNumber": "AI103",
-    "departureAirport": "SFO",
-    "arrivalAirport": "DXB",
-    "departureDate": "2023-08-27T15:00:00",
-    "arrivalDate": "2023-08-28T17:00:00",
-    "price": 720
-  },
-  {
-    "flightNumber": "AI104",
-    "departureAirport": "ORD",
-    "arrivalAirport": "BOM",
-    "departureDate": "2023-08-28T12:00:00",
-    "arrivalDate": "2023-08-29T13:15:00",
-    "price": 590
-  },
-  {
-    "flightNumber": "AI105",
-    "departureAirport": "BOS",
-    "arrivalAirport": "HKG",
-    "departureDate": "2023-08-29T16:00:00",
-    "arrivalDate": "2023-08-30T18:30:00",
-    "price": 780
-  },
-  {
-    "flightNumber": "AI106",
-    "departureAirport": "SEA",
-    "arrivalAirport": "ICN",
-    "departureDate": "2023-08-30T11:00:00",
-    "arrivalDate": "2023-08-31T13:45:00",
-    "price": 800
-  },
-  {
-    "flightNumber": "AI107",
-    "departureAirport": "MIA",
-    "arrivalAirport": "CDG",
-    "departureDate": "2023-08-31T08:30:00",
-    "arrivalDate": "2023-08-31T22:15:00",
-    "price": 680
-  },
-  {
-    "flightNumber": "AI108",
-    "departureAirport": "DFW",
-    "arrivalAirport": "PEK",
-    "departureDate": "2023-09-01T09:00:00",
-    "arrivalDate": "2023-09-02T10:00:00",
-    "price": 760
-  },
-  {
-    "flightNumber": "AI109",
-    "departureAirport": "ATL",
-    "arrivalAirport": "FRA",
-    "departureDate": "2023-09-01T14:45:00",
-    "arrivalDate": "2023-09-02T05:30:00",
-    "price": 740
-  },
-  {
-    "flightNumber": "AI110",
-    "departureAirport": "YYZ",
-    "arrivalAirport": "NRT",
-    "departureDate": "2023-09-02T15:00:00",
-    "arrivalDate": "2023-09-03T17:00:00",
-    "price": 820
-  }
-]
+{
+  "flights": [
+    {
+      "flightNumber": "AI101",
+      "departureAirport": "JFK",
+      "arrivalAirport": "DEL",
+      "departureDate": "2023-08-26T14:00:00",
+      "arrivalDate": "2023-08-27T14:30:00",
+      "price": 500
+    },
+    {
+      "flightNumber": "AI102",
+      "departureAirport": "LAX",
+      "arrivalAirport": "LHR",
+      "departureDate": "2023-08-26T10:00:00",
+      "arrivalDate": "2023-08-27T10:45:00",
+      "price": 650
+    },
+    {
+      "flightNumber": "AI103",
+      "departureAirport": "SFO",
+      "arrivalAirport": "DXB",
+      "departureDate": "2023-08-27T15:00:00",
+      "arrivalDate": "2023-08-28T17:00:00",
+      "price": 720
+    },
+    {
+      "flightNumber": "AI104",
+      "departureAirport": "ORD",
+      "arrivalAirport": "BOM",
+      "departureDate": "2023-08-28T12:00:00",
+      "arrivalDate": "2023-08-29T13:15:00",
+      "price": 590
+    },
+    {
+      "flightNumber": "AI105",
+      "departureAirport": "BOS",
+      "arrivalAirport": "HKG",
+      "departureDate": "2023-08-29T16:00:00",
+      "arrivalDate": "2023-08-30T18:30:00",
+      "price": 780
+    },
+    {
+      "flightNumber": "AI106",
+      "departureAirport": "SEA",
+      "arrivalAirport": "ICN",
+      "departureDate": "2023-08-30T11:00:00",
+      "arrivalDate": "2023-08-31T13:45:00",
+      "price": 800
+    },
+    {
+      "flightNumber": "AI107",
+      "departureAirport": "MIA",
+      "arrivalAirport": "CDG",
+      "departureDate": "2023-08-31T08:30:00",
+      "arrivalDate": "2023-08-31T22:15:00",
+      "price": 680
+    },
+    {
+      "flightNumber": "AI108",
+      "departureAirport": "DFW",
+      "arrivalAirport": "PEK",
+      "departureDate": "2023-09-01T09:00:00",
+      "arrivalDate": "2023-09-02T10:00:00",
+      "price": 760
+    },
+    {
+      "flightNumber": "AI109",
+      "departureAirport": "ATL",
+      "arrivalAirport": "FRA",
+      "departureDate": "2023-09-01T14:45:00",
+      "arrivalDate": "2023-09-02T05:30:00",
+      "price": 740
+    },
+    {
+      "flightNumber": "AI110",
+      "departureAirport": "YYZ",
+      "arrivalAirport": "NRT",
+      "departureDate": "2023-09-02T15:00:00",
+      "arrivalDate": "2023-09-03T17:00:00",
+      "price": 820
+    }
+  ]
+}
