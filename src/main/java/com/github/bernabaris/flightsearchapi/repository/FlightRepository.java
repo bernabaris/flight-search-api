@@ -1,6 +1,5 @@
 package com.github.bernabaris.flightsearchapi.repository;
 
-import com.github.bernabaris.flightsearchapi.entity.AirportEntity;
 import com.github.bernabaris.flightsearchapi.entity.FlightEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,12 +11,10 @@ import java.util.List;
 
 public interface FlightRepository extends JpaRepository<FlightEntity,Long> {
     @Query("SELECT f FROM FlightEntity f WHERE " +
-            "f.departureAirport = :departureAirport AND " +
-            "f.arrivalAirport = :arrivalAirport AND " +
-            "f.departureDateTime >= :departureDate AND " +
-            "(f.returnDateTime <= :returnDate OR f.returnDateTime IS NULL)")
-    List<FlightEntity> findByCriteria(@Param("departureAirport") AirportEntity departureAirport,
-                                      @Param("arrivalAirport") AirportEntity arrivalAirport,
-                                      @Param("departureDate") LocalDateTime departureDate,
-                                      @Param("returnDate") LocalDateTime returnDate);
+            "f.departureAirport.id = :departureAirportId AND " +
+            "f.arrivalAirport.id = :arrivalAirportId AND " +
+            "f.date = :date")
+    List<FlightEntity> findByCriteria(@Param("departureAirport") long departureAirportId,
+                                      @Param("arrivalAirport") long arrivalAirportId,
+                                      @Param("date") LocalDateTime date);
 }

@@ -1,19 +1,15 @@
 package com.github.bernabaris.flightsearchapi.impl;
 
 import com.github.bernabaris.flightsearchapi.model.Flight;
-import com.github.bernabaris.flightsearchapi.service.DBService;
+import com.github.bernabaris.flightsearchapi.model.Flights;
 import com.github.bernabaris.flightsearchapi.util.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.springframework.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
@@ -21,20 +17,19 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 @Slf4j
-public class DataGenerator implements ApplicationListener<ContextRefreshedEvent> {
+public class DataGenerator {
     private static final String FLIGHT_JSON_FILE = "flight.json";
 
-    private final DBService dbService;
     private final ResourceLoader resourceLoader;
 
     @Value("${data.directory:classpath:data}")
     private String dataDirectory;
-
-    public DataGenerator(DBService dbService, ResourceLoader resourceLoader) {
-        this.dbService = dbService;
+    
+    public DataGenerator(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
 
@@ -54,13 +49,12 @@ public class DataGenerator implements ApplicationListener<ContextRefreshedEvent>
         }
     }
 
-    @Override
-    @Transactional
-    public void onApplicationEvent(@NonNull ContextRefreshedEvent contextRefreshedEvent) {
+    public List<Flight> getFlights() {
+        Flights flights = null;
         try {
-            Flight flight = DataGenerator.loadJsonFile(resourceLoader, dataDirectory, FLIGHT_JSON_FILE, Flight.class);
-            if (flight != null) {
-                dbService.addOrUpdateFlight(flight);
+            flights = DataGenerator.loadJsonFile(resourceLoader, dataDirectory, FLIGHT_JSON_FILE, Flights.class);
+            if (flights != null) {
+                flights.setFlightList(flights.getFlightList());
             } else {
                 log.error("Flight file is invalid. Data directory: {}", dataDirectory);
                 throw new IOException("Flight file is invalid");
@@ -69,5 +63,7 @@ public class DataGenerator implements ApplicationListener<ContextRefreshedEvent>
         } catch (IOException e) {
             log.error("Error occurred while loading flight json file.", e);
         }
+        assert flights != null;
+        return flights.getFlightList();
     }
 }

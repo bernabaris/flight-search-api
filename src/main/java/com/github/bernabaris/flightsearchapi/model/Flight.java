@@ -23,11 +23,8 @@ public class Flight {
     @Schema(description = "Arrival airport of the flight")
     private String arrivalAirport;
 
-    @Schema(description = "Departure date and time of the flight")
-    private LocalDateTime departureDateTime;
-
-    @Schema(description = "Arrival date and time of the flight")
-    private LocalDateTime returnDateTime;
+    @Schema(description = "Date of the flight")
+    private LocalDateTime flightDate;
 
     @Schema(description = "Price of the flight")
     private BigDecimal price;

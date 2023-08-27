@@ -1,7 +1,6 @@
 package com.github.bernabaris.flightsearchapi;
 
 import com.github.bernabaris.flightsearchapi.dto.DtoUtils;
-import com.github.bernabaris.flightsearchapi.dto.FlightInputDto;
 import com.github.bernabaris.flightsearchapi.dto.UserInputDto;
 import com.github.bernabaris.flightsearchapi.impl.DBServiceImpl;
 import com.github.bernabaris.flightsearchapi.impl.FlightServiceImpl;
@@ -30,7 +29,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(

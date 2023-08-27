@@ -1,7 +1,5 @@
 package com.github.bernabaris.flightsearchapi.service;
 
-
-import com.github.bernabaris.flightsearchapi.entity.AirportEntity;
 import com.github.bernabaris.flightsearchapi.model.Airport;
 import com.github.bernabaris.flightsearchapi.model.Flight;
 
@@ -15,10 +13,10 @@ import java.util.Optional;
 public interface FlightService {
 
     List<Airport> getAllAirports();
-    Optional<Airport> getAirport(long Id);
+    Optional<Airport> getAirport(long id);
     List<Flight> getAllFlights();
     Flight addFlight(Flight flight);
     Optional<Flight> getFlight(long flightId);
-    List<Flight> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate);
+    List<Flight> getFlightsByCriteria(long departureAirportId, long arrivalAirportId, LocalDateTime date);
     Flight deleteFlight(long flightId);
 }

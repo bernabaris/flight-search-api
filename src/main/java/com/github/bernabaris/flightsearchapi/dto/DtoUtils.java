@@ -8,23 +8,12 @@ public class DtoUtils {
 
     }
 
-    public static Flight convertToFlight(FlightInputDto dto){
-        return Flight.builder()
-                .departureAirport(getAirportNameFromId(dto.getDepartureAirportId()))
-                .arrivalAirport(getAirportNameFromId(dto.getArrivalAirportId()))
-                .departureDateTime(dto.getDepartureDateTime())
-                .returnDateTime(dto.getReturnDateTime())
-                .build();
-
-    }
-
     public static FlightDto convertToFlightDto(Flight flight){
         return FlightDto.builder()
                 .id(flight.getId())
                 .departureAirport(flight.getDepartureAirport())
                 .arrivalAirport(flight.getArrivalAirport())
-                .departureDateTime(flight.getDepartureDateTime())
-                .returnDateTime(flight.getReturnDateTime())
+                .flightDate(flight.getFlightDate())
                 .price(flight.getPrice())
                 .build();
     }

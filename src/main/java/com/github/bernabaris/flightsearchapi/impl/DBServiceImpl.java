@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class DBServiceImpl implements DBService {
@@ -49,9 +48,9 @@ public class DBServiceImpl implements DBService {
     }
 
     @Override
-    public List<Flight> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate) {
-        List<FlightEntity> flights = flightRepository.findByCriteria(departureAirport, arrivalAirport, departureDate, returnDate);
-        return flights.stream().map(this::convertToFlight).collect(Collectors.toList());
+    public List<Flight> getFlightsByCriteria(long departureAirportId, long arrivalAirportId, LocalDateTime date) {
+        List<FlightEntity> flights = flightRepository.findByCriteria(departureAirportId, arrivalAirportId, date);
+        return flights.stream().map(this::convertToFlight).toList();
     }
 
     @Override
@@ -117,13 +116,11 @@ public class DBServiceImpl implements DBService {
     }
 
     private Flight convertToFlight(FlightEntity flightEntity) {
-
         return Flight.builder()
                 .id(flightEntity.getId())
                 .departureAirport(flightEntity.getDepartureAirport().getCity().getName())
                 .arrivalAirport(flightEntity.getArrivalAirport().getCity().getName())
-                .departureDateTime(flightEntity.getDepartureDateTime())
-                .returnDateTime(flightEntity.getReturnDateTime())
+                .flightDate(flightEntity.getDate())
                 .price(flightEntity.getPrice())
                 .departureAirportId(flightEntity.getDepartureAirport().getId())
                 .arrivalAirportId(flightEntity.getArrivalAirport().getId())
@@ -147,8 +144,7 @@ public class DBServiceImpl implements DBService {
                 .id(flight.getId())
                 .departureAirport(departureAirportEntity)
                 .arrivalAirport(arrivalAirportEntity)
-                .departureDateTime(flight.getDepartureDateTime())
-                .returnDateTime(flight.getReturnDateTime())
+                .date(flight.getFlightDate())
                 .price(flight.getPrice())
                 .build();
     }

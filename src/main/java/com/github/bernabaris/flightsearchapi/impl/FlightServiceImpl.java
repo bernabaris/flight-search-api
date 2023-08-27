@@ -69,7 +69,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate) {
-        return dbService.getFlightsByCriteria(departureAirport, arrivalAirport, departureDate, returnDate);
+    public List<Flight> getFlightsByCriteria(long departureAirportId, long arrivalAirportId, LocalDateTime date) {
+        return dbService.getFlightsByCriteria(departureAirportId, arrivalAirportId, date);
     }
 }

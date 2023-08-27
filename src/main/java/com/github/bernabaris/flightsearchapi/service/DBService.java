@@ -20,6 +20,6 @@ public interface DBService {
     Optional<Flight> getFlightById(long flightId);
     List<Airport> getAirportsByFlight(long flightId);
     Airport addOrUpdateAirport(Airport airport);
-    List<Flight> getFlightsByCriteria(AirportEntity departureAirport, AirportEntity arrivalAirport, LocalDateTime departureDate, LocalDateTime returnDate);
+    List<Flight> getFlightsByCriteria(long departureAirportId, long arrivalAirportId, LocalDateTime date);
     void deleteFlight(long flightId);
 }

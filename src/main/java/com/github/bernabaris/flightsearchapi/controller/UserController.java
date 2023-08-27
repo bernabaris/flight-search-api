@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("user")
 @Slf4j
 public class UserController {
 

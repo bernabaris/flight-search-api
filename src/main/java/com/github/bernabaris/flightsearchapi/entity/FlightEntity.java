@@ -34,9 +34,9 @@ public class FlightEntity {
     @JoinColumn(name = "created_by_id")
     private UserEntity createdBy;
 
-    private LocalDateTime departureDateTime;
+    @Column(name = "date")
+    private LocalDateTime date;
 
-    private LocalDateTime returnDateTime;
-
+    @Column(name = "price")
     private BigDecimal price;
 }

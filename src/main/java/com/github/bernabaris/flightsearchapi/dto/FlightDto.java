@@ -12,8 +12,7 @@ public class FlightDto {
     private Long id;
     private String departureAirport;
     private String arrivalAirport;
-    private LocalDateTime departureDateTime;
-    private LocalDateTime returnDateTime;
+    private LocalDateTime flightDate;
     private BigDecimal price;
     private String createdBy;
 }

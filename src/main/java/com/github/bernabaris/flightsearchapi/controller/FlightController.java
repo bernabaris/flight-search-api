@@ -1,7 +1,8 @@
 package com.github.bernabaris.flightsearchapi.controller;
 
 import com.github.bernabaris.flightsearchapi.dto.FlightDto;
-import com.github.bernabaris.flightsearchapi.dto.FlightInputDto;
+import com.github.bernabaris.flightsearchapi.dto.FlightSearchInputDto;
+import com.github.bernabaris.flightsearchapi.dto.FlightSearchResultDto;
 import com.github.bernabaris.flightsearchapi.model.Airport;
 import com.github.bernabaris.flightsearchapi.model.Flight;
 import com.github.bernabaris.flightsearchapi.dto.DtoUtils;
@@ -17,13 +18,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/flight")
+@RequestMapping("flight")
 @Slf4j
 public class FlightController {
 
     private final FlightService flightService;
+
     FlightController(FlightService flightService) {
         this.flightService = flightService;
     }
@@ -40,16 +43,17 @@ public class FlightController {
         return flightService.getAllFlights().stream().map(DtoUtils::convertToFlightDto).toList();
     }
 
-    @PostMapping
-    public FlightDto addFlight(@RequestBody FlightInputDto flightInputDto, HttpServletResponse httpServletResponse, @AuthenticationPrincipal AppUser user) throws IOException {
-        log.info("Add flight: {} user: {}", flightInputDto, user.getEmail());
-        Flight flightToAdd = DtoUtils.convertToFlight(flightInputDto);
-        flightToAdd.setCreatedBy(user.getEmail());
-        Flight addedFlight = flightService.addFlight(flightToAdd);
-        if (addedFlight == null) {
-            httpServletResponse.sendError(HttpServletResponse.SC_CONFLICT, "Flight already exists");
-            return null;
+    @GetMapping("/search")
+    public FlightSearchResultDto getFlights(@RequestBody FlightSearchInputDto flightSearchInputDto) {
+        FlightSearchResultDto.FlightSearchResultDtoBuilder builder = FlightSearchResultDto.builder();
+        builder.arrivalFlights(flightService.getFlightsByCriteria(flightSearchInputDto.getDepartureAirportId(),
+                        flightSearchInputDto.getArrivalAirportId(), flightSearchInputDto.getDepartureDateTime())
+                .stream().map(DtoUtils::convertToFlightDto).toList());
+        if (flightSearchInputDto.getReturnDateTime() != null) {
+            builder.returnFlights(flightService.getFlightsByCriteria(flightSearchInputDto.getDepartureAirportId(),
+                            flightSearchInputDto.getArrivalAirportId(), flightSearchInputDto.getReturnDateTime())
+                    .stream().map(DtoUtils::convertToFlightDto).toList());
         }
-        return DtoUtils.convertToFlightDto(addedFlight);
+        return builder.build();
     }
 }

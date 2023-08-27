@@ -1,4 +1,4 @@
-package com.github.bernabaris.flightsearchapi.service;
+package com.github.bernabaris.flightsearchapi.impl;
 
 import com.github.bernabaris.flightsearchapi.entity.AirportEntity;
 import com.github.bernabaris.flightsearchapi.entity.CityEntity;
@@ -9,19 +9,24 @@ import com.github.bernabaris.flightsearchapi.repository.FlightRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FlightDataFetcherService {
+public class FlightDataFetcher {
 
+    private final DataGenerator dataGenerator;
     private final FlightRepository flightRepository;
 
-    public FlightDataFetcherService(FlightRepository flightRepository) {
+    public FlightDataFetcher(FlightRepository flightRepository, DataGenerator dataGenerator) {
+        this.dataGenerator = dataGenerator;
         this.flightRepository = flightRepository;
+    }
+    
+    @PostConstruct
+    public void init() {
+        fetchAndSaveFlightData(); // for init
     }
 
     @Scheduled(cron = "0 0 * * * ?")  // Run every hour
@@ -31,7 +36,6 @@ public class FlightDataFetcherService {
         List<FlightEntity> flightEntities = flights.stream()
                 .map(this::convertToFlightEntity)
                 .collect(Collectors.toList());
-
         flightRepository.saveAll(flightEntities);
     }
 
@@ -52,21 +56,12 @@ public class FlightDataFetcherService {
                 .id(flight.getId())
                 .departureAirport(departureAirportEntity)
                 .arrivalAirport(arrivalAirportEntity)
-                .departureDateTime(flight.getDepartureDateTime())
-                .returnDateTime(flight.getReturnDateTime())
+                .date(flight.getFlightDate())
                 .price(flight.getPrice())
                 .build();
     }
 
     private List<Flight> mockApiCall() {
-        List<Flight> flights = new ArrayList<>();
-        flights.add(Flight.builder()
-                .departureAirport("NYC")
-                .arrivalAirport("LAX")
-                .departureDateTime(LocalDateTime.now())
-                .returnDateTime(LocalDateTime.now().plusHours(6))
-                .price(new BigDecimal("300.00"))
-                .build());
-        return flights;
+        return dataGenerator.getFlights();
     }
 }
